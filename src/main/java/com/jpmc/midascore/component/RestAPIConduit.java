@@ -19,11 +19,11 @@ public class RestAPIConduit {
         this.restTemplate = builder.build();
     }
 
-    public int get_incentive_points(Transaction transaction) {
+    public float get_incentive_points(Transaction transaction) {
         String url = "http://localhost:8080/incentive";
         Incentive incentive = restTemplate.postForObject(url, transaction, Incentive.class);
         logger.info("Incentive API raw response: " + incentive);
-        Integer points = (incentive != null) ? incentive.getAmount() : null;
+        float points = (incentive != null) ? incentive.getAmount() : null;
         return points;
     }
 

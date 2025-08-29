@@ -1,20 +1,20 @@
 package com.jpmc.midascore.foundation;
 
 public class Incentive {
-    private int amount;
+    private float amount;
 
     public Incentive() {
     }
 
-    public Incentive(int amount) {
+    public Incentive(float amount) {
         this.amount = amount;
     }
 
-    public int getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 

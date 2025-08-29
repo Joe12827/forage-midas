@@ -37,7 +37,7 @@ public class Processor {
             return;
         }
 
-        int incentiveAmount = restAPIConduit.get_incentive_points(transaction);
+        float incentiveAmount = restAPIConduit.get_incentive_points(transaction);
         logger.info("Incentive points for recipient (userId=" + recipient.getName() + "): " + incentiveAmount);
 
         sender.setBalance(sender.getBalance() - transaction.getAmount());
