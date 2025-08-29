@@ -31,7 +31,7 @@ public class Processor {
             logger.info("----");
             return;
         }
-        if (sender.getBalance() < transaction.getAmount()) {
+        if (sender.getBalance().getAmount() < transaction.getAmount()) {
             logger.error("Insufficient funds for transaction");
             logger.info("----");
             return;
@@ -40,8 +40,8 @@ public class Processor {
         float incentiveAmount = restAPIConduit.get_incentive_points(transaction);
         logger.info("Incentive points for recipient (userId=" + recipient.getName() + "): " + incentiveAmount);
 
-        sender.setBalance(sender.getBalance() - transaction.getAmount());
-        recipient.setBalance(recipient.getBalance() + transaction.getAmount() + incentiveAmount);
+        sender.setBalance(sender.getBalance().getAmount() - transaction.getAmount());
+        recipient.setBalance(recipient.getBalance().getAmount() + transaction.getAmount() + incentiveAmount);
         databaseConduit.save(sender);
         databaseConduit.save(recipient);
         databaseConduit.save(new TransactionRecord(transaction.getSenderId(), transaction.getRecipientId(), transaction.getAmount() + incentiveAmount));
@@ -50,6 +50,5 @@ public class Processor {
         logger.info("Updated sender:    " + sender);
         logger.info("Updated recipient: " + recipient);
         logger.info("----");
-
     }
 }

@@ -26,5 +26,4 @@ public class RestAPIConduit {
         float points = (incentive != null) ? incentive.getAmount() : null;
         return points;
     }
-
 }
